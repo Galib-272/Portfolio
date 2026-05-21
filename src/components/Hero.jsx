@@ -70,6 +70,9 @@ const FloatingPhoto = ({ profilePic }) => {
 
 const Hero = () => {
   const profilePic = "/IMG.jpg";
+  
+  // Re-formatted Google Drive Direct Download API string endpoint
+  const resumeDownloadLink = "https://docs.google.com/uc?export=download&id=1aJmBoQ9a4jrzz7ygncMeg6UdQEagFmGo";
 
   return (
     <section 
@@ -102,16 +105,19 @@ const Hero = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start items-center">
-            {/* SEE RESUME BUTTON */}
+            {/* FIXED: DOWNLOAD CV BUTTON */}
             <motion.a
-              href="#"
+              href={resumeDownloadLink}
+              download="Syed_Ahmad_Galib_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group relative w-full sm:w-auto overflow-hidden px-10 py-4 rounded-2xl font-black flex items-center justify-center gap-3 transition-all uppercase text-[11px] tracking-widest text-white border border-white/10"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-[#6366f1] to-[#a855f7] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span className="relative z-10 flex items-center gap-3">
-                <FileText size={18} /> See Resume
+                <FileText size={18} /> Download CV
               </span>
             </motion.a>
 
@@ -124,7 +130,7 @@ const Hero = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-r from-[#6366f1] to-[#a855f7] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span className="relative z-10 flex items-center gap-3">
-                <LayoutGrid size={18} /> Selected Works
+                <LayoutGrid size={18} /> projects
               </span>
             </motion.a>
           </div>
