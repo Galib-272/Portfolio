@@ -1,22 +1,39 @@
 "use client";
-import { motion } from 'framer-motion';
-import { Cpu, Layout } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Cpu, Layout } from "lucide-react";
 
 const skills = {
   Frontend: [
-    "HTML5", "CSS3", "JavaScript", "TypeScript", "Next.js 15", 
-    "React.js", "Tailwind CSS", "Framer Motion", "Redux Toolkit", "Zustand"
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "TypeScript",
+    "Next.js 15",
+    "React.js",
+    "Tailwind CSS",
+    "Framer Motion",
+    "Redux Toolkit",
+    "Zustand",
   ],
   Backend: [
-    "Node.js", "Express.js", "MongoDB", "Mongoose", "Firebase", 
-    "BetterAuth", "JWT", "RESTful APIs", "Cloudinary"
-  ]
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "Mongoose",
+    "Firebase",
+    "BetterAuth",
+    "JWT",
+    "RESTful APIs",
+    "Cloudinary",
+  ],
 };
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-24 px-6 bg-[#0b0e14] relative overflow-hidden">
-      {/* Background ambient glow */}
+    <section
+      id="skills"
+      className="py-24 px-6 bg-[#0b0e14] relative overflow-hidden"
+    >
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/5 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -26,15 +43,20 @@ const Skills = () => {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h2 className="text-indigo-400 font-bold tracking-[0.4em] uppercase text-[12px] mb-4">My Stack</h2>
+          <h2 className="text-indigo-400 font-bold tracking-[0.4em] uppercase text-[12px] mb-4">
+            My Stack
+          </h2>
           <h3 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white">
-            Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">Expertise</span>
+            Technical{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">
+              Expertise
+            </span>
           </h3>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-8">
           {Object.entries(skills).map(([category, list], index) => (
-            <motion.div 
+            <motion.div
               key={category}
               initial={{ opacity: 0, x: index === 0 ? -30 : 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -45,7 +67,11 @@ const Skills = () => {
             >
               <div className="flex items-center gap-4 mb-8">
                 <div className="p-4 bg-indigo-500/10 rounded-2xl text-indigo-400 group-hover:scale-110 transition-transform duration-500">
-                  {category === "Frontend" ? <Layout size={28} /> : <Cpu size={28} />}
+                  {category === "Frontend" ? (
+                    <Layout size={28} />
+                  ) : (
+                    <Cpu size={28} />
+                  )}
                 </div>
                 <h4 className="text-2xl font-black text-white uppercase tracking-tighter">
                   {category}
@@ -54,14 +80,14 @@ const Skills = () => {
 
               <div className="flex flex-wrap gap-3">
                 {list.map((skill, i) => (
-                  <motion.span 
-                    key={skill} 
+                  <motion.span
+                    key={skill}
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    whileHover={{ 
-                      scale: 1.1, 
+                    whileHover={{
+                      scale: 1.1,
                       backgroundColor: "rgba(99, 102, 241, 1)",
-                      boxShadow: "0px 0px 20px rgba(99, 102, 241, 0.4)"
+                      boxShadow: "0px 0px 20px rgba(99, 102, 241, 0.4)",
                     }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.05 }}

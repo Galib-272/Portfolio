@@ -9,10 +9,8 @@
   }
 
   html {
-    /* ✅ This makes the link jump stop 100px before the section */
-    /* so your Navbar doesn't cover the section title */
     scroll-behavior: smooth;
-    scroll-padding-top: 100px; 
+    scroll-padding-top: 100px;
   }
 
   body {
@@ -22,7 +20,6 @@
   }
 }
 
-/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
 }

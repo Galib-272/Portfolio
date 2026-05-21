@@ -29,7 +29,6 @@ const Education = () => {
       className="py-24 bg-[#0b0e14] relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6">
-        {/* Animated Section Heading Layout */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -49,7 +48,6 @@ const Education = () => {
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Education Column */}
           <div className="space-y-8">
             <div className="flex items-center gap-4 mb-8">
               <div className="p-3 bg-indigo-500/10 rounded-xl border border-indigo-500/20">
@@ -69,7 +67,6 @@ const Education = () => {
                 transition={{ delay: index * 0.2 }}
                 className="relative pl-8 border-l border-white/10 group"
               >
-                {/* Timeline Dot */}
                 <div className="absolute -left-[5px] top-0 w-[9px] h-[9px] rounded-full bg-slate-700 group-hover:bg-indigo-500 transition-colors shadow-[0_0_10px_rgba(99,102,241,0.5)]" />
 
                 <div className="bg-[#1a1f2e]/50 border border-white/5 p-6 rounded-3xl hover:border-white/10 transition-all hover:bg-[#1a1f2e]">
@@ -90,7 +87,6 @@ const Education = () => {
             ))}
           </div>
 
-          {/* Experience Column (Fresher Status) */}
           <div className="space-y-8">
             <div className="flex items-center gap-4 mb-8">
               <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20">
@@ -146,7 +142,6 @@ const Education = () => {
                 </ul>
               </div>
 
-              {/* Decorative background element */}
               <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-indigo-500/5 blur-3xl rounded-full" />
             </motion.div>
           </div>
