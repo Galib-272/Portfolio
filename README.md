@@ -25,35 +25,40 @@
 ---
 
 ## 🚀 Live Showcase & Preview
-* **Live Link:** *[Insert your Vercel/Netlify live portfolio URL here]*
-* **Status:** 🟢 Active / Available for Part-time, Hubrid & Full-time opportunities.
+
+- **Live Link:** portfolio-galib272.vercel.app
+- **Status:** 🟢 Active / Available for Part-time, Hybrid & Full-time opportunities.
 
 ---
 
 ## ✨ Features
-* **🎭 Advanced Smooth Animations:** Fluid page transitions, custom timelines, and interactive entrance animations using **Framer Motion**.
-* **🌌 Ultra-Premium Dark Aesthetic:** Deep-space ambient background blur gradients designed for professional software engineers.
-* **📱 Bulletproof Responsive Layouts:** Tailored optimization structures scaling gracefully from compact mobile panels up to 4K monitor grids.
-* **🛸 Interactive Interactive Orbit Wheel:** Self-correcting interactive tech icons rotating in real-time around the hero element profile container.
-* **📬 Production-Grade Contact Pipeline:** Secure contact gateway integrated directly with **Web3Forms API** featuring contextual floating status validation toast notifications.
+
+- **🎭 Advanced Smooth Animations:** Fluid page transitions, custom timelines, and interactive entrance animations using **Framer Motion**.
+- **🌌 Ultra-Premium Dark Aesthetic:** Deep-space ambient background blur gradients designed for professional software engineers.
+- **📱 Bulletproof Responsive Layouts:** Tailored optimization structures scaling gracefully from compact mobile panels up to 4K monitor grids.
+- **🛸 Interactive Interactive Orbit Wheel:** Self-correcting interactive tech icons rotating in real-time around the hero element profile container.
+- **📬 Production-Grade Contact Pipeline:** Secure contact gateway integrated directly with **Web3Forms API** featuring contextual floating status validation toast notifications.
 
 ---
 
 ## 🛠 Tech Stack
 
 ### Core Architecture
-* **Framework:** Next.js 15 (Client-side rendered layouts)
-* **Library:** React 19
-* **Styling Engine:** Tailwind CSS 
+
+- **Framework:** Next.js 15 (Client-side rendered layouts)
+- **Library:** React 19
+- **Styling Engine:** Tailwind CSS
 
 ### Graphics & Utilities
-* **Motion Graphics:** Framer Motion
-* **Icon Engine:** Lucide React
-* **Media Handling:** Next/Image optimization engine
+
+- **Motion Graphics:** Framer Motion
+- **Icon Engine:** Lucide React
+- **Media Handling:** Next/Image optimization engine
 
 ---
 
 ## 📂 Project Architecture Grid
+
 ```text
 ├── public/                 # Static asset payloads (Images, CV documents)
 └── src/
@@ -65,35 +70,44 @@
         └── Projects.jsx    # Project list grid wrapper
 ```
 
-⚙️ Getting Started
+## ⚙️ Getting Started
+
 Follow these steps to spin up a local development copy of this portfolio website:
 
 1. Clone the Workspace
-Bash
-git clone [https://github.com/Galib-272/portfolio.git](https://github.com/Galib-272/portfolio.git)
+
+```bash
+git clone https://github.com/Galib-272/portfolio.git
 cd portfolio
+```
 
 2. Install Project Dependencies
-Bash
-npm install
 
-3. Setup Your Environment Configurations (.env.local)
+```bash
+npm install
+```
+
+3. Setup Your Environment Configurations (.env.local):-
+
 Create a .env.local file in your root folder directory and hook up your Web3Forms access key token:
-Bash
+
+```bash
 NEXT_PUBLIC_WEB3FORMS_KEY="your-web3forms-access-key-here"
+```
 
 4. Boot Up the Next.js Compiler
-Bash
+
+```bash
 npm run dev
+```
+
 Open http://localhost:3000 with your browser to view the portfolio.
 
-🤝 Let's Connect!
+## 🤝 Let's Connect!
+
 If you like my work, feel free to reach out to me! I am always open to discussing new software development roles, contract positions, and open-source collaborations.
 
-📧 Email: ahmedgalib6677@gmail.com
-
-💼 LinkedIn: Syed Ahmad Galib
-
-📞 Contact: +8801920376677
-
-📍 Location: Dhaka, Bangladesh
+- 📧 **Email:** [ahmedgalib6677@gmail.com](mailto:ahmedgalib6677@gmail.com)
+- 💼 **LinkedIn:** [Syed Ahmad Galib](https://www.linkedin.com/in/galib272/)
+- 📞 **Contact:** [+8801920376677](tel:+8801920376677)
+- 📍 **Location:** Dhaka, Bangladesh
