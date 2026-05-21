@@ -1,9 +1,27 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Send } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Send, CheckCircle2, AlertCircle, Loader2, X } from "lucide-react";
 
 const Contact = () => {
+  // Form State
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState("idle"); // "idle" | "submitting"
+
+  // Toast Notification State
+  const [toast, setToast] = useState({ show: false, message: "", type: "success" });
+
+  // Auto-hide toast after 4 seconds
+  useEffect(() => {
+    if (toast.show) {
+      const timer = setTimeout(() => {
+        setToast((prev) => ({ ...prev, show: false }));
+      }, 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [toast.show]);
+
   const contactInfo = [
     {
       label: "Email Me",
@@ -62,8 +80,105 @@ const Contact = () => {
     },
   ];
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email || !formData.message) return;
+
+    setStatus("submitting");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `New Portfolio Message from ${formData.name}`,
+        }),
+      });
+
+      const result = await response.json();
+      setStatus("idle");
+
+      if (result.success) {
+        setToast({
+          show: true,
+          message: "Success! Your message was delivered.",
+          type: "success",
+        });
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setToast({
+          show: true,
+          message: "Error processing request. Try again.",
+          type: "error",
+        });
+      }
+    } catch (error) {
+      console.error("Submit Error:", error);
+      setStatus("idle");
+      setToast({
+        show: true,
+        message: "Network exception. Check connection.",
+        type: "error",
+      });
+    }
+  };
+
   return (
     <section id="contact" className="py-24 px-6 bg-[#0b0e14] text-white relative overflow-hidden">
+      
+      {/* High-End Top-Right Corner Toast */}
+      <div className="fixed top-6 right-6 z-50 flex flex-col gap-3 pointer-events-none w-full max-w-sm">
+        <AnimatePresence>
+          {toast.show && (
+            <motion.div
+              initial={{ opacity: 0, y: -20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.95 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className={`pointer-events-auto flex items-center gap-4 p-4 rounded-xl bg-[#141923]/90 border backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.4)] relative overflow-hidden ${
+                toast.type === "success" ? "border-emerald-500/20 shadow-emerald-500/5" : "border-rose-500/20 shadow-rose-500/5"
+              }`}
+            >
+              {/* Dynamic Left Colored Border Glow strip */}
+              <div className={`absolute left-0 top-0 bottom-0 w-1 ${
+                toast.type === "success" ? "bg-emerald-500" : "bg-rose-500"
+              }`} />
+
+              <div className="pl-1">
+                {toast.type === "success" ? (
+                  <CheckCircle2 size={20} className="text-emerald-400 shrink-0" />
+                ) : (
+                  <AlertCircle size={20} className="text-rose-400 shrink-0" />
+                )}
+              </div>
+
+              <div className="flex-1 min-w-0">
+                <p className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-0.5">
+                  {toast.type === "success" ? "System Notification" : "System Error"}
+                </p>
+                <p className="text-sm font-medium text-white tracking-wide">
+                  {toast.message}
+                </p>
+              </div>
+
+              <button 
+                onClick={() => setToast((prev) => ({ ...prev, show: false }))}
+                className="p-1 rounded-lg hover:bg-white/5 border border-transparent hover:border-white/10 text-slate-400 hover:text-white transition-all shrink-0"
+              >
+                <X size={14} />
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
       {/* Structural Ambient Blur Glows */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-indigo-500/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#a855f7]/5 blur-[120px] rounded-full pointer-events-none" />
@@ -119,7 +234,7 @@ const Contact = () => {
 
           {/* RIGHT CONTAINER: Premium Input Message Box Form */}
           <div className="lg:col-span-7 w-full p-8 md:p-10 rounded-[2.5rem] bg-[#141923]/60 border border-white/5 backdrop-blur-md shadow-2xl">
-            <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {/* Full Name Input Field */}
@@ -129,7 +244,10 @@ const Contact = () => {
                   </label>
                   <input
                     type="text"
+                    required
                     placeholder="John Doe"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full px-5 py-4 bg-[#0b0e14]/80 border border-white/5 rounded-xl text-sm font-medium tracking-wide text-white placeholder-slate-600 focus:outline-none focus:border-[#6366f1]/50 transition-colors"
                   />
                 </div>
@@ -141,7 +259,10 @@ const Contact = () => {
                   </label>
                   <input
                     type="email"
+                    required
                     placeholder="john@example.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full px-5 py-4 bg-[#0b0e14]/80 border border-white/5 rounded-xl text-sm font-medium tracking-wide text-white placeholder-slate-600 focus:outline-none focus:border-[#6366f1]/50 transition-colors"
                   />
                 </div>
@@ -154,7 +275,10 @@ const Contact = () => {
                 </label>
                 <textarea
                   rows={5}
+                  required
                   placeholder="What's on your mind?"
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="w-full px-5 py-4 bg-[#0b0e14]/80 border border-white/5 rounded-xl text-sm font-medium tracking-wide text-white placeholder-slate-600 focus:outline-none focus:border-[#6366f1]/50 transition-colors resize-none"
                 />
               </div>
@@ -162,11 +286,18 @@ const Contact = () => {
               {/* Action Button Container */}
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.02, bg: "linear-gradient(to right, #5356e2, #933fe3)" }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full py-4 rounded-xl font-black text-xs uppercase tracking-[0.2em] text-white bg-gradient-to-r from-[#6366f1] to-[#a855f7] flex items-center justify-center gap-3 transition-all shadow-[0_4px_20px_rgba(99,102,241,0.25)]"
+                disabled={status === "submitting"}
+                whileHover={status !== "submitting" ? { scale: 1.02, bg: "linear-gradient(to right, #5356e2, #933fe3)" } : {}}
+                whileTap={status !== "submitting" ? { scale: 0.98 } : {}}
+                className={`w-full py-4 rounded-xl font-black text-xs uppercase tracking-[0.2em] text-white bg-gradient-to-r from-[#6366f1] to-[#a855f7] flex items-center justify-center gap-3 transition-all shadow-[0_4px_20px_rgba(99,102,241,0.25)] ${
+                  status === "submitting" ? "opacity-70 cursor-not-allowed" : ""
+                }`}
               >
-                Send <Send size={14} className="translate-y-[-1px]" />
+                {status === "submitting" ? (
+                  <>Sending... <Loader2 size={14} className="animate-spin" /></>
+                ) : (
+                  <>Send <Send size={14} className="translate-y-[-1px]" /></>
+                )}
               </motion.button>
 
             </form>
