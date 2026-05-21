@@ -133,8 +133,8 @@ const Contact = () => {
   return (
     <section id="contact" className="py-24 px-6 bg-[#0b0e14] text-white relative overflow-hidden">
       
-      {/* High-End Top-Right Corner Toast */}
-      <div className="fixed top-6 right-6 z-50 flex flex-col gap-3 pointer-events-none w-full max-w-sm">
+      {/* FIXED: Shifted top configuration down below the navbar layout */}
+      <div className="fixed top-24 right-6 z-50 flex flex-col gap-3 pointer-events-none w-full max-w-sm">
         <AnimatePresence>
           {toast.show && (
             <motion.div
