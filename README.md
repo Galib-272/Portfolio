@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=500&color=00F0FF&center=true&vCenter=true&width=600&lines=SYED+AHMAD+GALIB;+DEVELOPER+PORTFOLIO;Crafting+Digital+Experiences" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=500&color=00F0FF&center=true&vCenter=true&width=600&lines=SYED+AHMAD+GALIB;DEVELOPER+PORTFOLIO;Crafting+Digital+Experiences" alt="Typing SVG" />
 
   <p>
     <a href="https://portfolio-galib272.vercel.app" target="_blank">
@@ -28,40 +28,36 @@
 
 > **Experience the portfolio live:** [https://portfolio-galib272.vercel.app](https://portfolio-galib272.vercel.app)
 
-| Feature      | Status                                  |
-| ------------ | --------------------------------------- |
-| Portfolio    | 🟢 Live & Active                        |
+| Feature | Status |
+|---------|--------|
+| Portfolio | 🟢 Live & Active |
 | Availability | 🟢 Open for Part-time & Full-time roles |
 
 ---
 
 ## ✨ **Key Features**
 
-| Category                 | Highlights                                                                                                        |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------- |
-| **🎭 Motion Graphics**   | Fluid page transitions, custom scroll timelines, and interactive entrance animations powered by **Framer Motion** |
-| **🌌 Visual Design**     | Ultra-premium dark theme with deep-space ambient gradients & glassmorphism effects                                |
-| **📱 Responsiveness**    | Flawless adaptation from mobile devices to 4K displays                                                            |
-| **🛸 Interactive Orbit** | Dynamic, self-correcting tech icon wheel rotating around the hero section                                         |
-| **📬 Contact Pipeline**  | Production-ready form with **Web3Forms API** integration & real-time toast notifications                          |
+| Category | Highlights |
+|----------|------------|
+| **🎭 Motion Graphics** | Fluid page transitions, custom scroll timelines, and interactive entrance animations powered by **Framer Motion** |
+| **🌌 Visual Design** | Ultra-premium dark theme with deep-space ambient gradients & glassmorphism effects |
+| **📱 Responsiveness** | Flawless adaptation from mobile devices to 4K displays |
+| **🛸 Interactive Orbit** | Dynamic, self-correcting tech icon wheel rotating around the hero section |
+| **📬 Contact Pipeline** | Production-ready form with **Web3Forms API** integration & real-time toast notifications |
 
 ---
 
 ## 🛠️ **Technology Stack**
 
-┌─────────────────────────────────────────────────────┐
-│ CORE ARCHITECTURE │
-├───────────────────┬─────────────────────────────────┤
-│ Framework │ Next.js 15 (App Router) │
-│ Library │ React 19 │
-│ Styling │ Tailwind CSS 3.4 │
-│ Animations │ Framer Motion │
-│ Icons │ Lucide React │
-│ Forms │ Web3Forms API │
-│ Deployment │ Vercel │
-└───────────────────┴─────────────────────────────────┘
-
-text
+| Category | Technology |
+|----------|------------|
+| Framework | Next.js 15 (App Router) |
+| Library | React 19 |
+| Styling | Tailwind CSS 3.4 |
+| Animations | Framer Motion |
+| Icons | Lucide React |
+| Forms | Web3Forms API |
+| Deployment | Vercel |
 
 ---
 
@@ -122,5 +118,7 @@ Platform	Link
 📄 License
 This project is open-source and available under the MIT License.
 
-<div align="center"> <p>Built with ⚡ by <strong>Syed Ahmad Galib</strong></p> <p> <a href="https://github.com/Galib-272">GitHub</a> • <a href="https://portfolio-galib272.vercel.app">Live Demo</a> </p> </div>
-```
+<div align="center">
+Built with ⚡ by Syed Ahmad Galib
+
+<p> <a href="https://github.com/Galib-272">GitHub</a> • <a href="https://portfolio-galib272.vercel.app">Live Demo</a> </p></div> ```
