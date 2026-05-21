@@ -63,6 +63,8 @@
         ├── Education.jsx   # Pathway timeline structure
         ├── Hero.jsx        # Floating profile and orbit engine
         └── Projects.jsx    # Project list grid wrapper
+```
+
 ⚙️ Getting Started
 Follow these steps to spin up a local development copy of this portfolio website:
 
@@ -74,20 +76,15 @@ cd portfolio
 2. Install Project Dependencies
 Bash
 npm install
-# or
-yarn install
 
 3. Setup Your Environment Configurations (.env.local)
 Create a .env.local file in your root folder directory and hook up your Web3Forms access key token:
-
-Code snippet
+Bash
 NEXT_PUBLIC_WEB3FORMS_KEY="your-web3forms-access-key-here"
 
 4. Boot Up the Next.js Compiler
 Bash
 npm run dev
-# or
-yarn dev
 Open http://localhost:3000 with your browser to view the portfolio.
 
 🤝 Let's Connect!
