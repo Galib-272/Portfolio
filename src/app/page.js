@@ -1,3 +1,8 @@
+"use client";
+
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import LoadingScreen from "@/components/LoadingScreen";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Education from "@/components/Education";
@@ -8,23 +13,38 @@ import Skills from "@/components/Skills";
 import Footer from "@/components/Footer";
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
-    <main className="bg-[#0b0e14] min-h-screen">
-      <Navbar />
+    <>
+      <AnimatePresence mode="wait">
+        {isLoading && (
+          <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />
+        )}
+      </AnimatePresence>
 
-      <Hero />
+      <motion.main
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isLoading ? 0 : 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="bg-[#0b0e14] min-h-screen"
+      >
+        <Navbar />
 
-      <About />
+        <Hero />
 
-      <Skills />
+        <About />
 
-      <Education />
+        <Skills />
 
-      <Projects />
+        <Education />
 
-      <Contact />
+        <Projects />
 
-      <Footer />
-    </main>
+        <Contact />
+
+        <Footer />
+      </motion.main>
+    </>
   );
 }

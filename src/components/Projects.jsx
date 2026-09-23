@@ -6,6 +6,16 @@ import Image from "next/image";
 
 const projects = [
   {
+    title: "IdeaVault",
+    subtitle: "Startup Idea Validation Platform",
+    description:
+      "IdeaVault is a collaborative platform engineered for innovators to securely deposit business concepts, gather structural peer validation, and refine startup formulas collectively.",
+    image: "/ideavault.png",
+    tags: ["Next.js", "Full-Stack", "Tailwind", "REST API"],
+    github: "https://github.com/Galib-272/Assignment-9-client-side.git",
+    live: "https://assignment-9-client-side.vercel.app/",
+  },
+  {
     title: "SkillSphere",
     subtitle: "Modern Online Learning Platform",
     description:
@@ -24,16 +34,6 @@ const projects = [
     tags: ["React.js", "Recharts", "Soft-UI", "Tailwind"],
     github: "https://github.com/Galib-272/Assignment-7.git",
     live: "https://keenkeeper-ebon.vercel.app",
-  },
-  {
-    title: "Digitools",
-    subtitle: "Digital E-commerce Platform",
-    description:
-      "A modern, high-performance e-commerce interface for digital tools. Features an interactive cart system with real-time updates and instant toast notifications for a smooth UX.",
-    image: "/digitools.jpg",
-    tags: ["React.js", "DaisyUI", "Toastify", "Tailwind"],
-    github: "https://github.com/Galib-272/Assignment-6.git",
-    live: "http://digitools-platform-272.netlify.app",
   },
 ];
 
