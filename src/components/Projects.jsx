@@ -6,34 +6,34 @@ import Image from "next/image";
 
 const projects = [
   {
+    title: "Savoria",
+    subtitle: "Restaurant Management System",
+    description:
+      "Savoria is a full-stack restaurant management system featuring role-based dashboards, POS and payments, table reservations, kitchen management, real-time notifications, and analytics.",
+    image: "/savoria.png",
+    tags: ["Next.js", "TypeScript", "MongoDB", "Socket.IO"],
+    github: "https://github.com/Galib-272/Savoria_client_side.git",
+    live: "https://savoria-client-side.vercel.app/",
+  },
+  {
+    title: "TicketBari",
+    subtitle: "Online Ticket Booking Platform",
+    description:
+      "TicketBari is an online ticket booking platform featuring travel search, ticket booking, vendor management, authentication, payment integration, and admin analytics.",
+    image: "/ticketbari.png",
+    tags: ["Next.js", "Express.js", "MongoDB", "JWT"],
+    github: "https://github.com/Galib-272/Assignment-10_client_side.git",
+    live: "https://ticketbari-client-side.vercel.app/",
+  },
+  {
     title: "IdeaVault",
     subtitle: "Startup Idea Validation Platform",
     description:
-      "IdeaVault is a collaborative platform engineered for innovators to securely deposit business concepts, gather structural peer validation, and refine startup formulas collectively.",
+      "IdeaVault is a collaborative platform engineered for innovators to securely deposit business concepts, gather structured peer validation, and refine startup ideas collectively.",
     image: "/ideavault.png",
-    tags: ["Next.js", "Full-Stack", "Tailwind", "REST API"],
+    tags: ["Next.js", "Full-Stack", "Tailwind CSS", "REST API"],
     github: "https://github.com/Galib-272/Assignment-9-client-side.git",
     live: "https://assignment-9-client-side.vercel.app/",
-  },
-  {
-    title: "SkillSphere",
-    subtitle: "Modern Online Learning Platform",
-    description:
-      "SkillSphere is a cutting-edge, responsive e-learning platform designed to empower students. Whether you're looking to master Web Development, Design, or Marketing, SkillSphere provides the tools to upgrade your skills today.",
-    image: "/skillsphere.jpg",
-    tags: ["Next.js 15", "BetterAuth", "Motion", "Tailwind"],
-    github: "https://github.com/Galib-272/Assignment-8.git",
-    live: "https://skillsphere-learning.vercel.app",
-  },
-  {
-    title: "KeenKeeper",
-    subtitle: "Relationship Manager",
-    description:
-      "KeenKeeper is a personal relationship manager designed to help you maintain meaningful connections. It keeps your circle close by tracking interactions and reminding you when it's time to reach out.",
-    image: "/keenkeeper.jpg",
-    tags: ["React.js", "Recharts", "Soft-UI", "Tailwind"],
-    github: "https://github.com/Galib-272/Assignment-7.git",
-    live: "https://keenkeeper-ebon.vercel.app",
   },
 ];
 
@@ -41,73 +41,84 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="py-24 px-6 bg-[#0b0e14] relative overflow-hidden"
+      className="relative overflow-hidden bg-[#0b0e14] px-4 py-20 sm:px-6 sm:py-24"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="mx-auto max-w-7xl">
+        {/* Section Heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="mb-12 text-center sm:mb-16 lg:mb-20"
         >
-          <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white">
+          <h2 className="text-4xl font-black uppercase tracking-tighter text-white md:text-6xl">
             Projects
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Responsive Project Grid */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
           {projects.map((project, index) => (
             <motion.div
-              key={index}
+              key={project.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group bg-[#141923]/40 border border-white/5 rounded-[2rem] overflow-hidden shadow-2xl flex flex-col h-full"
+              className="group flex h-full min-w-0 flex-col overflow-hidden rounded-[1.5rem] border border-white/5 bg-[#141923]/40 shadow-2xl sm:rounded-[2rem]"
             >
-              <div className="relative h-56 w-full overflow-hidden bg-slate-800">
+              {/* Project Image - Full Image Visible */}
+              <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-[#0b0e14]">
                 <Image
                   src={project.image}
-                  alt={project.title}
+                  alt={`${project.title} project preview`}
                   fill
-                  sizes="(max-width: 1024px) 100vw, 33vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1279px) 30vw, 400px"
+                  className="object-contain object-center transition-transform duration-500 group-hover:scale-[1.02]"
                 />
               </div>
 
-              <div className="p-6 flex flex-col flex-grow">
-                <div className="flex flex-wrap gap-2 mb-4">
+              {/* Project Details */}
+              <div className="flex flex-1 flex-col p-4 sm:p-5 lg:p-6">
+                {/* Technology Tags */}
+                <div className="mb-4 flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-[10px] font-bold uppercase tracking-widest px-3 py-1 bg-white/5 border border-white/10 rounded-full text-indigo-400"
+                      className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-indigo-400 sm:text-[10px]"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <h3 className="text-2xl font-black text-white mb-0.5 uppercase tracking-tight">
+                {/* Title */}
+                <h3 className="mb-1 break-words text-xl font-black uppercase tracking-tight text-white sm:text-2xl">
                   {project.title}
                 </h3>
-                <p className="text-[11px] font-bold text-indigo-400 mb-4 uppercase tracking-wider">
+
+                {/* Subtitle */}
+                <p className="mb-3 min-h-[2.5rem] text-[10px] font-bold uppercase leading-relaxed tracking-wider text-indigo-400 sm:text-[11px]">
                   {project.subtitle}
                 </p>
 
-                <p className="text-slate-400 text-sm leading-relaxed mb-6 line-clamp-3">
+                {/* Description */}
+                <p className="mb-6 line-clamp-3 text-sm leading-relaxed text-slate-400">
                   {project.description}
                 </p>
 
-                <div className="flex gap-3 mt-auto w-full">
+                {/* Action Buttons */}
+                <div className="mt-auto flex w-full gap-3 pt-2">
                   <motion.a
                     whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.98 }}
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 py-3 border border-white/10 text-slate-300 hover:text-white rounded-xl font-bold text-[11px] uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-gradient-to-r hover:from-[#6366f1] hover:to-[#a855f7] hover:border-transparent hover:shadow-lg hover:shadow-indigo-500/20 transition-all duration-200"
+                    className="flex min-w-0 flex-1 items-center justify-center gap-2 rounded-xl border border-white/10 px-2 py-3 text-[10px] font-bold uppercase tracking-wider text-slate-300 transition-all duration-200 hover:border-transparent hover:bg-gradient-to-r hover:from-[#6366f1] hover:to-[#a855f7] hover:text-white hover:shadow-lg hover:shadow-indigo-500/20 sm:text-[11px]"
                   >
-                    <ExternalLink size={14} /> Live Demo
+                    <ExternalLink size={14} className="shrink-0" />
+                    <span className="whitespace-nowrap">Live Demo</span>
                   </motion.a>
 
                   <motion.a
@@ -116,10 +127,10 @@ const Projects = () => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 py-3 border border-white/10 text-slate-300 hover:text-white rounded-xl font-bold text-[11px] uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-gradient-to-r hover:from-[#6366f1] hover:to-[#a855f7] hover:border-transparent hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-200"
+                    className="flex min-w-0 flex-1 items-center justify-center gap-2 rounded-xl border border-white/10 px-2 py-3 text-[10px] font-bold uppercase tracking-wider text-slate-300 transition-all duration-200 hover:border-transparent hover:bg-gradient-to-r hover:from-[#6366f1] hover:to-[#a855f7] hover:text-white hover:shadow-lg hover:shadow-purple-500/20 sm:text-[11px]"
                   >
                     <svg
-                      className="w-3.5 h-3.5 fill-current"
+                      className="h-3.5 w-3.5 shrink-0 fill-current"
                       viewBox="0 0 24 24"
                       aria-hidden="true"
                     >
@@ -129,7 +140,7 @@ const Projects = () => {
                         clipRule="evenodd"
                       />
                     </svg>
-                    GitHub
+                    <span className="whitespace-nowrap">GitHub</span>
                   </motion.a>
                 </div>
               </div>
