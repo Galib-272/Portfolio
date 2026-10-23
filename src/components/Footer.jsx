@@ -1,6 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
+
+const stack = [
+  { name: "MongoDB", icon: "/icons/mongodb.svg" },
+  { name: "Express", icon: "/icons/express.svg" },
+  { name: "React", icon: "/icons/react.svg" },
+  { name: "Node", icon: "/icons/nodejs.svg" },
+];
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -8,46 +16,50 @@ const Footer = () => {
   const iconVariants = {
     hover: {
       scale: 1.05,
-      backgroundColor: "rgba(255, 255, 255, 0.05)",
-      borderColor: "rgba(99, 102, 241, 0.3)",
-      color: "#6366f1",
+      backgroundColor: "rgba(168, 85, 247, 0.12)",
+      borderColor: "rgba(168, 85, 247, 0.5)",
+      color: "#e9d5ff",
       transition: { duration: 0.2 },
     },
     tap: { scale: 0.95 },
   };
 
   return (
-    <footer className="bg-[#0b0e14] text-white border-t border-white/5 pt-16 pb-12 px-6 lg:px-20 relative overflow-hidden">
+    <footer className="text-white border-t border-white/10 bg-[#070912]/60 backdrop-blur-sm pt-16 pb-12 px-6 lg:px-20 relative overflow-hidden">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-400/60 to-transparent" />
       <div className="max-w-7xl mx-auto flex flex-col gap-12">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pb-2">
           <div className="flex flex-col gap-3">
-            <h2 className="text-2xl font-black tracking-tight uppercase">
-              Galib<span className="text-[#a855f7]">.</span>
+            <h2 className="font-display text-3xl font-bold tracking-tight">
+              Galib<span className="text-gradient">.dev</span>
             </h2>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/5 border border-green-500/10 w-fit">
               <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-[9px] font-bold text-green-500 uppercase tracking-widest">
+              <span className="text-[11px] font-semibold text-green-400">
                 System Active / {currentYear}
               </span>
             </div>
           </div>
 
-          <div className="flex items-center gap-6 px-6 py-3 rounded-2xl bg-[#1a1f2e]/20 border border-white/5 backdrop-blur-sm">
-            <span className="text-xs font-semibold tracking-wider text-slate-600 uppercase mr-1 select-none">
+          <div className="glass flex flex-wrap items-center gap-x-6 gap-y-3 px-6 py-3.5 rounded-2xl">
+            <span className="text-sm font-semibold text-slate-400 select-none">
               Stack
             </span>
-            <span className="text-slate-500 text-sm font-bold hover:text-[#47A248] transition-colors cursor-default select-none">
-              🍃 MongoDB
-            </span>
-            <span className="text-slate-500 text-sm font-bold hover:text-[#61DAFB] transition-colors cursor-default select-none">
-              ex Express
-            </span>
-            <span className="text-slate-500 text-sm font-bold hover:text-[#61DAFB] transition-colors cursor-default select-none">
-              ⚛️ React
-            </span>
-            <span className="text-slate-500 text-sm font-bold hover:text-[#F7DF1E] transition-colors cursor-default select-none">
-              ⬢ Node
-            </span>
+            {stack.map((item) => (
+              <span
+                key={item.name}
+                className="flex items-center gap-2 text-sm font-semibold text-slate-300 cursor-default select-none"
+              >
+                <Image
+                  src={item.icon}
+                  alt=""
+                  width={18}
+                  height={18}
+                  unoptimized
+                />
+                {item.name}
+              </span>
+            ))}
           </div>
         </div>
 
@@ -60,7 +72,7 @@ const Footer = () => {
               variants={iconVariants}
               whileHover="hover"
               whileTap="tap"
-              className="p-3 bg-[#1a1f2e]/30 border border-white/5 rounded-xl text-slate-400 transition-colors flex items-center justify-center"
+              className="p-3 bg-white/[0.04] border border-white/10 rounded-xl text-slate-300 transition-colors flex items-center justify-center"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +97,7 @@ const Footer = () => {
               variants={iconVariants}
               whileHover="hover"
               whileTap="tap"
-              className="p-3 bg-[#1a1f2e]/30 border border-white/5 rounded-xl text-slate-400 transition-colors flex items-center justify-center"
+              className="p-3 bg-white/[0.04] border border-white/10 rounded-xl text-slate-300 transition-colors flex items-center justify-center"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -111,7 +123,7 @@ const Footer = () => {
               variants={iconVariants}
               whileHover="hover"
               whileTap="tap"
-              className="p-3 bg-[#1a1f2e]/30 border border-white/5 rounded-xl text-slate-400 transition-colors flex items-center justify-center"
+              className="p-3 bg-white/[0.04] border border-white/10 rounded-xl text-slate-300 transition-colors flex items-center justify-center"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -130,10 +142,10 @@ const Footer = () => {
           </div>
 
           <div className="flex flex-col items-center md:items-end gap-1.5 text-center md:text-right">
-            <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">
+            <p className="text-sm font-semibold text-slate-300">
               Designed & Built by Syed Ahmad Galib
             </p>
-            <p className="text-[9px] font-medium text-slate-600 uppercase tracking-widest">
+            <p className="text-xs font-medium text-slate-500">
               © {currentYear} All Rights Reserved{" "}
               <span className="mx-2 text-slate-700">|</span> Dhaka, BD (GMT+6)
             </p>

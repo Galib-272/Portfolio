@@ -27,7 +27,7 @@ export default function Home() {
         initial={{ opacity: 0 }}
         animate={{ opacity: isLoading ? 0 : 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="bg-[#0b0e14] min-h-screen"
+        className="relative z-10 min-h-screen"
       >
         <Navbar />
 

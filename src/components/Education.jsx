@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GraduationCap, Briefcase, Calendar } from "lucide-react";
+import { GraduationCap, Briefcase, Calendar, Check } from "lucide-react";
 
 const Education = () => {
   const educationData = [
@@ -24,10 +24,7 @@ const Education = () => {
   ];
 
   return (
-    <section
-      id="education"
-      className="py-24 bg-[#0b0e14] relative overflow-hidden"
-    >
+    <section id="education" className="py-28 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -36,65 +33,70 @@ const Education = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="mb-16 text-center"
         >
-          <h2 className="text-indigo-400 font-bold tracking-[0.4em] uppercase text-[12px] mb-4 ">
-            Pathways
-          </h2>
-          <h3 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white">
+          <p className="eyebrow mb-6">Pathways</p>
+          <h2 className="section-title text-5xl md:text-7xl">
             Education <span className="text-slate-500">&</span>{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6366f1] to-[#a855f7]">
-              Experience
-            </span>
-          </h3>
+            <span className="text-gradient">experience</span>
+          </h2>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          <div className="space-y-8">
+          <div>
             <div className="flex items-center gap-4 mb-8">
-              <div className="p-3 bg-indigo-500/10 rounded-xl border border-indigo-500/20">
-                <GraduationCap className="text-indigo-400" size={24} />
+              <div className="grid h-12 w-12 place-items-center rounded-xl bg-indigo-500/15 ring-1 ring-inset ring-indigo-400/30">
+                <GraduationCap className="text-indigo-300" size={24} />
               </div>
-              <h4 className="text-2xl font-bold text-white tracking-tight">
-                Academic Journey
-              </h4>
+              <h3 className="text-2xl font-semibold text-white tracking-tight">
+                Academic journey
+              </h3>
             </div>
 
-            {educationData.map((edu, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-                className="relative pl-8 border-l border-white/10 group"
-              >
-                <div className="absolute -left-[5px] top-0 w-[9px] h-[9px] rounded-full bg-slate-700 group-hover:bg-indigo-500 transition-colors shadow-[0_0_10px_rgba(99,102,241,0.5)]" />
+            {/* Timeline */}
+            <div className="relative space-y-8 pl-8">
+              <div
+                aria-hidden="true"
+                className="absolute left-[5px] top-2 bottom-2 w-px bg-gradient-to-b from-indigo-400 via-violet-500/60 to-cyan-400/30"
+              />
+              {educationData.map((edu, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.2 }}
+                  className="relative group"
+                >
+                  <div
+                    className={`absolute -left-[32px] top-7 h-[11px] w-[11px] rounded-full bg-gradient-to-br ${edu.color} ring-4 ring-[#070912] shadow-[0_0_14px_rgba(129,140,248,0.8)]`}
+                  />
 
-                <div className="bg-[#1a1f2e]/50 border border-white/5 p-6 rounded-3xl hover:border-white/10 transition-all hover:bg-[#1a1f2e]">
-                  <div className="flex items-center gap-2 text-indigo-400 text-xs font-bold mb-3 uppercase tracking-widest">
-                    <Calendar size={14} /> {edu.duration}
+                  <div className="glass glass-hover p-6 md:p-7 rounded-3xl transition-transform duration-300 group-hover:translate-x-1">
+                    <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.05] px-3 py-1 text-indigo-200 text-xs font-semibold mb-4 ring-1 ring-inset ring-white/10">
+                      <Calendar size={13} /> {edu.duration}
+                    </div>
+                    <h4 className="text-xl font-semibold text-white mb-1 tracking-tight">
+                      {edu.institution}
+                    </h4>
+                    <p className="text-indigo-300/90 text-sm font-medium mb-4">
+                      {edu.degree}
+                    </p>
+                    <p className="text-muted text-sm leading-relaxed">
+                      {edu.description}
+                    </p>
                   </div>
-                  <h5 className="text-xl font-bold text-white mb-1 group-hover:text-indigo-400 transition-colors">
-                    {edu.institution}
-                  </h5>
-                  <p className="text-slate-400 text-sm font-semibold mb-4 italic">
-                    {edu.degree}
-                  </p>
-                  <p className="text-slate-500 text-sm leading-relaxed">
-                    {edu.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
+            </div>
           </div>
 
-          <div className="space-y-8">
+          <div>
             <div className="flex items-center gap-4 mb-8">
-              <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20">
-                <Briefcase className="text-emerald-400" size={24} />
+              <div className="grid h-12 w-12 place-items-center rounded-xl bg-emerald-500/15 ring-1 ring-inset ring-emerald-400/30">
+                <Briefcase className="text-emerald-300" size={24} />
               </div>
-              <h4 className="text-2xl font-bold text-white tracking-tight">
+              <h3 className="text-2xl font-semibold text-white tracking-tight">
                 Experience
-              </h4>
+              </h3>
             </div>
 
             <motion.div
@@ -102,30 +104,34 @@ const Education = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="bg-gradient-to-br from-[#1a1f2e] to-[#0b0e14] border border-white/5 p-8 rounded-[2.5rem] relative overflow-hidden group"
+              className="glass p-8 md:p-10 rounded-[2.5rem] relative overflow-hidden group"
             >
               <div className="relative z-10">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                  <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-widest">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 ring-1 ring-inset ring-emerald-400/25 mb-6">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+                  </span>
+                  <span className="text-xs font-semibold text-emerald-300">
                     Open for roles
                   </span>
                 </div>
 
-                <h5 className="text-3xl font-black text-white mb-4 uppercase tracking-tighter">
-                  Aspiring <br />{" "}
-                  <span className="text-indigo-500">Full-Stack Developer</span>
-                </h5>
+                <h4 className="text-4xl font-bold text-white mb-5 tracking-tight leading-[1.05]">
+                  Aspiring
+                  <br />
+                  <span className="text-gradient">Full-Stack Developer</span>
+                </h4>
 
-                <p className="text-slate-400 leading-relaxed mb-8">
+                <p className="text-slate-300 leading-relaxed mb-8">
                   Currently a{" "}
-                  <span className="text-white font-bold">Fresher</span> actively
-                  looking for Junior Full-Stack or Frontend positions. Ready to
-                  contribute to production-grade applications as an Intern or
-                  Junior Developer.
+                  <span className="text-white font-semibold">Fresher</span>{" "}
+                  actively looking for Junior Full-Stack or Frontend positions.
+                  Ready to contribute to production-grade applications as an
+                  Intern or Junior Developer.
                 </p>
 
-                <ul className="space-y-4 mb-8">
+                <ul className="space-y-3">
                   {[
                     "MERN Stack Proficient",
                     "Frontend Optimization",
@@ -133,16 +139,19 @@ const Education = () => {
                   ].map((skill, i) => (
                     <li
                       key={i}
-                      className="flex items-center gap-3 text-sm text-slate-300 font-medium"
+                      className="flex items-center gap-3 text-[15px] text-slate-200 font-medium"
                     >
-                      <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
+                      <span className="grid h-6 w-6 place-items-center rounded-lg bg-indigo-500/20 text-indigo-200 ring-1 ring-inset ring-indigo-400/30">
+                        <Check size={14} strokeWidth={3} />
+                      </span>
                       {skill}
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-indigo-500/5 blur-3xl rounded-full" />
+              <div className="absolute -bottom-16 -right-16 w-64 h-64 bg-violet-500/25 blur-[90px] rounded-full" />
+              <div className="absolute -top-20 -left-10 w-52 h-52 bg-emerald-500/10 blur-[80px] rounded-full" />
             </motion.div>
           </div>
         </div>

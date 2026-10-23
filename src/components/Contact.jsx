@@ -185,10 +185,13 @@ const Contact = () => {
     }
   };
 
+  const inputClass =
+    "w-full px-5 py-4 bg-[#070912]/70 border border-white/10 rounded-xl text-[15px] font-medium text-white placeholder-slate-500 focus:outline-none focus:border-violet-400/70 focus:ring-4 focus:ring-violet-500/15 transition-all";
+
   return (
     <section
       id="contact"
-      className="py-24 px-6 bg-[#0b0e14] text-white relative overflow-hidden"
+      className="py-28 px-6 text-white relative overflow-hidden"
     >
       <div className="fixed top-24 right-6 z-50 flex flex-col gap-3 pointer-events-none w-full max-w-sm">
         <AnimatePresence>
@@ -198,10 +201,10 @@ const Contact = () => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className={`pointer-events-auto flex items-center gap-4 p-4 rounded-xl bg-[#141923]/90 border backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.4)] relative overflow-hidden ${
+              className={`pointer-events-auto flex items-center gap-4 p-4 rounded-xl bg-[#0f1322]/95 border backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative overflow-hidden ${
                 toast.type === "success"
-                  ? "border-emerald-500/20 shadow-emerald-500/5"
-                  : "border-rose-500/20 shadow-rose-500/5"
+                  ? "border-emerald-500/25"
+                  : "border-rose-500/25"
               }`}
             >
               <div
@@ -222,12 +225,12 @@ const Contact = () => {
               </div>
 
               <div className="flex-1 min-w-0">
-                <p className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-0.5">
+                <p className="text-xs font-semibold text-slate-400 mb-0.5">
                   {toast.type === "success"
                     ? "System Notification"
                     : "System Error"}
                 </p>
-                <p className="text-sm font-medium text-white tracking-wide">
+                <p className="text-sm font-medium text-white">
                   {toast.message}
                 </p>
               </div>
@@ -243,28 +246,20 @@ const Contact = () => {
         </AnimatePresence>
       </div>
 
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-indigo-500/5 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#a855f7]/5 blur-[120px] rounded-full pointer-events-none" />
-
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="mb-16 text-left">
-          <div className="flex items-center gap-3 mb-2">
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white">
-              LET&apos;S{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6366f1] to-[#a855f7]">
-                CONNECT.
-              </span>
-            </h2>
-          </div>
-          <div className="w-24 h-[4px] bg-gradient-to-r from-[#6366f1] to-[#a855f7] rounded-full mb-6" />
-          <p className="text-slate-400 text-sm max-w-xl font-medium leading-relaxed">
+        <div className="mb-14 text-left">
+          <p className="eyebrow mb-6">Contact</p>
+          <h2 className="section-title text-5xl md:text-7xl mb-6">
+            Let&apos;s <span className="text-gradient pr-1">connect.</span>
+          </h2>
+          <p className="text-slate-300 text-lg max-w-xl leading-relaxed">
             Have a project in mind or just want to say hi? Feel free to reach
             out. I&apos;m always open to discussing new opportunities.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          <div className="lg:col-span-5 space-y-4 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div className="lg:col-span-5 space-y-3 w-full">
             {contactInfo.map((item, index) => {
               const TagName = item.href ? motion.a : motion.div;
               return (
@@ -285,25 +280,19 @@ const Contact = () => {
                       ? "noopener noreferrer"
                       : undefined
                   }
-                  whileHover={
-                    item.href
-                      ? { x: 8, borderColor: "rgba(99, 102, 241, 0.2)" }
-                      : undefined
-                  }
-                  className={`w-full flex items-center gap-5 p-5 rounded-2xl bg-[#141923] border border-white/5 shadow-lg transition-all ${
-                    item.href
-                      ? "cursor-pointer hover:bg-[#1a202c]"
-                      : "cursor-default"
+                  whileHover={item.href ? { x: 8 } : undefined}
+                  className={`glass w-full flex items-center gap-5 p-4 pr-5 rounded-2xl transition-all ${
+                    item.href ? "glass-hover cursor-pointer" : "cursor-default"
                   }`}
                 >
-                  <div className="p-3.5 bg-[#0b0e14] border border-white/5 rounded-xl text-[#a855f7] flex items-center justify-center shrink-0">
+                  <div className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-indigo-500/25 to-violet-500/25 text-violet-200 ring-1 ring-inset ring-white/10 shrink-0">
                     {item.icon}
                   </div>
                   <div className="flex flex-col gap-0.5 overflow-hidden">
-                    <span className="text-[10px] font-bold text-[#a855f7] uppercase tracking-widest">
+                    <span className="text-xs font-semibold text-violet-300">
                       {item.label}
                     </span>
-                    <span className="text-sm font-semibold text-white truncate tracking-wide">
+                    <span className="text-[15px] font-semibold text-white truncate">
                       {item.value}
                     </span>
                   </div>
@@ -312,11 +301,15 @@ const Contact = () => {
             })}
           </div>
 
-          <div className="lg:col-span-7 w-full p-8 md:p-10 rounded-[2.5rem] bg-[#141923]/60 border border-white/5 backdrop-blur-md shadow-2xl">
-            <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="glass lg:col-span-7 w-full p-7 md:p-10 rounded-[2.5rem] overflow-hidden">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-violet-500/25 blur-[90px]"
+            />
+            <form onSubmit={handleSubmit} className="relative space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest pl-1">
+                  <label className="text-sm font-semibold text-slate-300 pl-1">
                     Full Name
                   </label>
                   <input
@@ -327,12 +320,12 @@ const Contact = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
                     }
-                    className="w-full px-5 py-4 bg-[#0b0e14]/80 border border-white/5 rounded-xl text-sm font-medium tracking-wide text-white placeholder-slate-600 focus:outline-none focus:border-[#6366f1]/50 transition-colors"
+                    className={inputClass}
                   />
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest pl-1">
+                  <label className="text-sm font-semibold text-slate-300 pl-1">
                     Email Address
                   </label>
                   <input
@@ -343,13 +336,13 @@ const Contact = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
-                    className="w-full px-5 py-4 bg-[#0b0e14]/80 border border-white/5 rounded-xl text-sm font-medium tracking-wide text-white placeholder-slate-600 focus:outline-none focus:border-[#6366f1]/50 transition-colors"
+                    className={inputClass}
                   />
                 </div>
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest pl-1">
+                <label className="text-sm font-semibold text-slate-300 pl-1">
                   Your Message
                 </label>
                 <textarea
@@ -360,33 +353,26 @@ const Contact = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, message: e.target.value })
                   }
-                  className="w-full px-5 py-4 bg-[#0b0e14]/80 border border-white/5 rounded-xl text-sm font-medium tracking-wide text-white placeholder-slate-600 focus:outline-none focus:border-[#6366f1]/50 transition-colors resize-none"
+                  className={`${inputClass} resize-none`}
                 />
               </div>
 
               <motion.button
                 type="submit"
                 disabled={status === "submitting"}
-                whileHover={
-                  status !== "submitting"
-                    ? {
-                        scale: 1.02,
-                        bg: "linear-gradient(to right, #5356e2, #933fe3)",
-                      }
-                    : {}
-                }
+                whileHover={status !== "submitting" ? { scale: 1.02 } : {}}
                 whileTap={status !== "submitting" ? { scale: 0.98 } : {}}
-                className={`w-full py-4 rounded-xl font-black text-xs uppercase tracking-[0.2em] text-white bg-gradient-to-r from-[#6366f1] to-[#a855f7] flex items-center justify-center gap-3 transition-all shadow-[0_4px_20px_rgba(99,102,241,0.25)] ${
+                className={`btn-ghost w-full py-4 rounded-xl font-semibold text-[15px] text-white flex items-center justify-center gap-3 ${
                   status === "submitting" ? "opacity-70 cursor-not-allowed" : ""
                 }`}
               >
                 {status === "submitting" ? (
                   <>
-                    Sending... <Loader2 size={14} className="animate-spin" />
+                    Sending... <Loader2 size={16} className="animate-spin" />
                   </>
                 ) : (
                   <>
-                    Send <Send size={14} className="translate-y-[-1px]" />
+                    Send <Send size={16} className="translate-y-[-1px]" />
                   </>
                 )}
               </motion.button>
